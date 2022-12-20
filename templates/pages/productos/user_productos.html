@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block navbar %}
+    {% include 'components/navbar.html' %}
+    {% endblock navbar %}
+
+    {% block content %}
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="min-w-full">
+                <thead class="border-b">
+                  <tr>
+                  
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      imagen
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      nombre
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      precio
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      estatus
+                    </th>
+                  </tr>
+                </thead>
+                <!--informacion del cuerpo-->
+                <tbody>
+                    {% for i in lista  %}
+                    <tr class="border-b">
+                      
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {% if i.imagen %}
+                          <div class="flex-shrink-0">
+                            <a href="{% url 'detalle' i.slug  %}">
+                              <img class="h-20 w-20 object-cover" src="{{i.imagen.url}}" alt="">
+                            </a>
+                            </div>
+                          
+                          {% endif %}
+                      </td>
+
+                     
+                        
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {{i.name}}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          dalares: {{i.price_display}}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {{i.active}}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <a href="{% url 'editar' i.slug %}">editar</a>
+                          </td>
+                      </tr>
+                    {% endfor %}
+                 
+                
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endblock content %}
+
+    {% block footer %}
+    
+    {% endblock footer %}
+
+    {% block javascript %}  
+    
+    {% endblock javascript %}

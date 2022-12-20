@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block navbar %}
+    {% include 'components/navbar.html' %}
+    {% endblock navbar %}
+
+    {% block content %}
+    {{producto.name}}
+    <br>
+    {{ producto.descripcion}}
+    <br>
+    precio {{ producto.price_display}}
+    <br>
+    <img src="{{producto.imagen.url }}" alt="">
+    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+        <button id="checkout-button" type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">comprar</button>
+      </div>
+    <form method="post">
+      {% csrf_token %}
+      <label for="company-website" class="block text-sm font-medium text-gray-700">comentarios</label>
+      {{ form.contenido }}
+      <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+        <button id="checkout-button" type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">comentar</button>
+      </div>
+    </form>
+    
+      
+     {% for i in listacomentarios  %}
+     <div>
+      <h4>{{i.usuariocoments}}</h4>
+      <p>{{i.contenido}}</p>
+      <small>{{i.creado|timesince}}</small>
+       <p>{{i.post}}</p>
+     </div>
+     <br>
+     {% endfor %}
+       
+   
+    {% endblock content %}
+
+    {% block footer %}
+    
+    {% endblock footer %}
+
+    {% block javascript %}  
+    
+    {% endblock javascript %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block navbar %}
+    {% include 'components/navbar.html' %}
+    {% endblock navbar %}
+
+    {% block content %}
+   
+        
+            <!--formulario de venta-->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+           
+            <label for="company-website" class="block text-sm font-medium text-gray-700">nombre del producto</label>
+            {{ form.name }}
+            <label for="company-website" class="block text-sm font-medium text-gray-700">description</label>
+            {{ form.descripcion}}
+            {{ form.imagen }}
+            <label for="company-website" class="block text-sm font-medium text-gray-700">slug</label>
+             {{form.slug}}
+            <label for="company-website" class="block text-sm font-medium text-gray-700">vender url</label>
+             {{ form.content_url}}
+            <label for="company-website" class="block text-sm font-medium text-gray-700">vender articulo</label>
+            {{form.cantent_file}}
+            <br>
+            <label for="company-website" class="block text-sm font-medium text-gray-700">hay articulos disponibles</label>
+            {{ form.active}}
+            <label for="company-website" class="block text-sm font-medium text-gray-700">precio</label>
+            {{form.precio}}
+            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+              </div>
+            </form>
+        
+      
+    {% endblock content %}
+
+    {% block footer %}
+    
+    {% endblock footer %}
+
+    {% block javascript %}  
+    
+    {% endblock javascript %}

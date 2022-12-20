@@ -1,0 +1,6 @@
+django==4.1
+django-environ==0.9.0 #este nos va ayudar con la seguridad
+Pillow==9.2.0 #este es para aceptar imagenes
+stripe==2.58.0 #este es para procesar pagos
+django-allauth==0.44.0 #esto nos va a servir para autentificar
+django-tailwind==2.2.0 #framework de css
